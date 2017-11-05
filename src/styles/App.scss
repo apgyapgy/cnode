@@ -1,0 +1,92 @@
+// root 全局容器
+body {
+  background: #333;
+  height: 100%;
+}
+#root {
+  height: 100%；
+}
+// App 包裹容器
+.rootBox {
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  max-width: 640px;
+  min-width: 400px;
+  margin: auto;
+  font-size: 13px;
+  background: #fff;
+}
+// header 
+.AppNav {
+  position: absolute;
+  background: #fff;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 10;
+  border-bottom: 1px solid #ddd;
+}
+.nav {
+  display: flex;
+  align-items:  center;
+  text-align: center;
+  font-size: 14px;
+  height: 50px;
+  li {
+    flex:1;
+  }
+}
+// 尾部导航
+
+.AppFooter {
+  position: absolute;
+  background: #fff;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 10;
+  border-top: 1px solid #ddd;
+}
+// 主页文章列表
+.content-box { // 文章区包裹层
+  overflow: scroll;
+  position: absolute;
+  top:50px;
+  right: 0;
+  bottom: 50px;
+  left: 0;
+  font-size: 16px;
+}
+.content-item { // 单条文章简介包裹层
+  padding: 15px 0 0 15px;
+  margin-bottom: 5px;
+  box-shadow: 0 0 5px #919191;
+}
+[flex=flex] {
+  display: flex;
+}
+.content-item-top {
+  p{
+    margin: 0;
+    color: #333;
+  }
+  img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+  }
+}
+.content-item-reply {
+  box-sizing: border-box;
+  text-align: center;
+  padding: 10px;
+  border-top: 1px solid #e9e9e9;
+  div{
+    flex: 1
+  }
+}
