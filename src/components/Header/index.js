@@ -10,22 +10,22 @@ const Header = () => {
           </NavLink>
         </li>
         <li>
-          <NavLink to='/' >
+          <NavLink to='/?tab=good' >
             精华
           </NavLink>
         </li>
         <li>
-          <NavLink to='/' >
+          <NavLink to='/?tab=share' >
             分享
           </NavLink>
         </li>
         <li>
-          <NavLink to='/' >
+          <NavLink to='/?tab=ask' >
             问答
           </NavLink>
         </li>
         <li>
-          <NavLink to='/' >
+          <NavLink to='/?tab=job' >
             招聘
           </NavLink>
         </li>
