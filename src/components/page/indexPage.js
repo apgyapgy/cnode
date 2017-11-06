@@ -16,7 +16,7 @@ class IndexPage extends Component {
       .then((res) => {
         this.setState((prevState) => {
           return {
-            content: res.data,
+            content: res.data.data,
             status:true,
             page: prevState.page + 1
           }
@@ -27,12 +27,16 @@ class IndexPage extends Component {
     const clientHeight = event.target.clientHeight
     const scrollHeight = event.target.scrollHeight
     const scrollTop = event.target.scrollTop
+    console.log(clientHeight + scrollTop, scrollHeight)
     if (clientHeight + scrollTop === scrollHeight) {
+      console.log(1)
       this.getTopics({ params:{ page: this.state.page, tab: this.state.tab } })
         .then((res) => {
           this.setState((prevState) => {
+            let data = prevState.content.concat(res.data.data)
+            console.log(data)
             return {
-              content: res.data,
+              content: data,
               status:true,
               page: prevState.page + 1
             }
@@ -40,11 +44,10 @@ class IndexPage extends Component {
         })
     }
   }
-  componentDidMount () {
-    console.log(this.scroll)
+  componentDidMount () { // 挂载scroll监听
     this.scroll.addEventListener('scroll', this.onScrollHandle)
   }
-  componentWillUnmount () {
+  componentWillUnmount () { // 卸载监听
     this.scroll.removeEventListener('scroll', this.onScrollHandle)
   }
 getTopics = (data) => {
@@ -52,6 +55,8 @@ getTopics = (data) => {
   return (
     axios.get('/topics', {
       params:{
+        limit:10,
+        mdrender:false,
         ...data.params
       }
     })
@@ -64,7 +69,7 @@ render () {
       <Header />
       <div className='content-box' ref={node => { this.scroll = node }}>
         <ul >
-          {this.state.status ? <IndexContent data={this.state.content.data} /> : ''}
+          {this.state.status ? <IndexContent data={this.state.content} /> : ''}
         </ul>
       </div>
       <Footer />

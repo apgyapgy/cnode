@@ -1,7 +1,6 @@
 import React from 'react'
 
 const IndexContent = (props) => {
-  console.log(props)
   return (
     props.data.map((item, index) => {
       return (
