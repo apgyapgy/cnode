@@ -1,4 +1,5 @@
 import React from 'react'
+import { Tab } from '../index'
 import { Link } from 'react-router-dom'
 import 'moment/locale/zh-cn'
 import moment from 'moment'
@@ -12,10 +13,10 @@ const IndexContent = (props) => {
             <div>
               <div className='content-item-top' flex='flex'>
                 <img src={item.author.avatar_url} alt='useravatar' />
-                <div>
+                <div className='content-item-user'>
                   <p>{item.author.loginname}</p>
-                  <time>时间</time>
-                  <span>{item.tab}</span>
+                  <time>{moment(`${item.create_at}`).fromNow()}</time>
+                  <Tab good={item.good} top={item.top} />
                 </div>
               </div>
               <div>

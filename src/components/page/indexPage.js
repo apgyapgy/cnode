@@ -12,39 +12,36 @@ class IndexPage extends Component {
       loading: true
     }
   }
-  componentWillMount () {
-    this.getTopics({ params:{ page: this.state.page, tab: this.state.tab } })
-      .then((res) => {
-        this.setState((prevState) => {
-          return {
-            content: res.data.data,
-            status:true,
-            page: prevState.page + 1,
-            loading: false
-          }
-        })
-      })
+  async componentWillMount () {
+    let data = await this.getTopics({ params:{ page: this.state.page, tab: this.state.tab } })
+    this.setState((prevState) => {
+      return {
+        content: data.data.data,
+        status: true,
+        page: prevState.page + 1,
+        loading: false
+      }
+    })
   }
-  componentWillUpdate (nextProps) {
+  async componentWillUpdate (nextProps) {
     if (!(nextProps.location.search === '')) { // 判断url内存在查询参数
       if (!(nextProps.location.search === this.props.location.search)) { // 判断前后参数是否相等（相等则不触发）
         let search = nextProps.location.search.slice(5) // 截取字符串
+        console.log(111)
         // 前后参数不相等触发请求
-        this.getTopics({ params:{ tab:search } })
-          .then((res) => {
-            this.setState({
-              content: res.data.data,
-              status:true,
-              page:1,
-            })
-          })
+        let data = await this.getTopics({ params: { tab: search } })
+        this.setState({
+          content: data.data.data,
+          status: true,
+          page: 1,
+        })
       }
     }
   }
   componentDidMount () { // 挂载scroll监听
     this.scroll.addEventListener('scroll', this.onScrollHandle)
   }
-  onScrollHandle = (event) => {
+  onScrollHandle = async (event) => {
     const clientHeight = event.target.clientHeight
     const scrollHeight = event.target.scrollHeight
     const scrollTop = event.target.scrollTop
@@ -52,19 +49,16 @@ class IndexPage extends Component {
       this.setState({
         loading: true
       })
-      this.getTopics({ params:{ page: this.state.page, tab: this.state.tab } })
-        .then((res) => {
-          this.setState((prevState) => {
-            let data = prevState.content.concat(res.data.data)
-            console.log(data)
-            return {
-              content: data,
-              status:true,
-              page: prevState.page + 1,
-              loading: false
-            }
-          })
-        })
+      let data = await this.getTopics({ params:{ page: this.state.page, tab: this.state.tab } })
+      this.setState((prevState) => {
+        let datas = prevState.content.concat(data.data.data)
+        return {
+          content: datas,
+          status:true,
+          page: prevState.page + 1,
+          loading: false
+        }
+      })
     }
   }
   componentWillUnmount () { // 卸载监听
@@ -79,10 +73,10 @@ getTopics = (data) => {
         ...data.params
       }
     })
+      .then(res => res)
   )
 }
 render () {
-  console.log(this.props)
   return (
     <div className='rootBox'>
       <Header />

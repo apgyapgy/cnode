@@ -7,6 +7,7 @@ import 'lib-flexible'
 import './index.css'
 // 自己写的样式
 import './styles/App.css'
+import 'github-markdown-css'
 import registerServiceWorker from './registerServiceWorker'
 import axios from 'axios'
 import Routers from './routes/Routers'

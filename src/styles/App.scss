@@ -107,6 +107,7 @@ body {
     width: 30px;
     height: 30px;
     border-radius: 50%;
+    border: 1px solid #333;
   }
 }
 .content-item-reply {
@@ -118,6 +119,26 @@ body {
   div{
     color: #bfbfbf;
     flex: 1
+  }
+}
+.content-item-user {
+  font-size: 14px;
+  padding-left: 10px;
+  time {
+    font-size: 12px;
+    color: #bfbfbf;
+  }
+  .content-tab{
+    display: inline-block;
+    span {
+      margin-left: 5px;
+    }
+    .content-tab-good{
+      color: #f7629e;
+    }
+    .content-tab-top {
+      color: #108ee9;
+    }
   }
 }
 // loading 
@@ -155,4 +176,57 @@ body {
 }
 .load-item5{
   animation: loadings 1.2s infinite -.6s ease-in-out;
+}
+
+// topic页面样式
+.topic-header {
+  height: 50px;
+  line-height: 50px;
+  h2 {
+    margin: 0;
+    width: 100%;
+    text-align: center;
+    text-indent: -50px;
+  }
+  border-bottom: 1px solid #ddd;
+}
+.topic-header-arrows { // 标题箭头
+  display: inline-block;
+  margin: 18px;
+  box-sizing: border-box;
+  border-left: 3px solid;
+  border-bottom: 3px solid;
+  width: 15px;
+  height: 15px;
+  transform: rotate(45deg)
+}
+.topic-content {
+  overflow: scroll;
+  position: absolute;
+  width: 100%;
+  top:50px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.markdown-body {
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  padding: 10px;
+}
+.topic-replies {
+  border-top: 1px solid #ddd;
+  img {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+  }
+}
+.topic-replies-item {
+  margin-left: 10px;
+  span {
+    font-size: 12px;
+    padding: 0 5px;;
+    color: #919191;
+  }
 }
