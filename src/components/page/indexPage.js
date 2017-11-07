@@ -24,19 +24,19 @@ class IndexPage extends Component {
     })
   }
   async componentWillUpdate (nextProps) {
-    if (!(nextProps.location.search === '')) { // 判断url内存在查询参数
-      if (!(nextProps.location.search === this.props.location.search)) { // 判断前后参数是否相等（相等则不触发）
-        let search = nextProps.location.search.slice(5) // 截取字符串
-        console.log(111)
-        // 前后参数不相等触发请求
-        let data = await this.getTopics({ params: { tab: search } })
-        this.setState({
-          content: data.data.data,
-          status: true,
-          page: 1,
-        })
-      }
+
+    if (!(nextProps.location.search === this.props.location.search)) { // 判断前后参数是否相等（相等则不触发）
+      let search = nextProps.location.search ? nextProps.location.search.slice(5) : 'all' // 截取字符串
+      console.log(111)
+      // 前后参数不相等触发请求
+      let data = await this.getTopics({ params: { tab: search } })
+      this.setState({
+        content: data.data.data,
+        status: true,
+        page: 1,
+      })
     }
+
   }
   componentDidMount () { // 挂载scroll监听
     this.scroll.addEventListener('scroll', this.onScrollHandle)
