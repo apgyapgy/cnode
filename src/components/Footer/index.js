@@ -9,13 +9,13 @@ const Footer = () => {
           <NavLink to='/'>首页</NavLink>
         </li>
         <li>
-          <NavLink to='/'>发表</NavLink>
+          <NavLink to='/newtopic'>发表</NavLink>
         </li>
         <li>
-          <NavLink to='/'>消息</NavLink>
+          <NavLink to='/messages'>消息</NavLink>
         </li>
         <li>
-          <NavLink to='/'>我的</NavLink>
+          <NavLink to='/userhome'>我的</NavLink>
         </li>
       </ul>
     </footer>
