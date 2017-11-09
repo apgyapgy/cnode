@@ -36,7 +36,6 @@ class IndexPage extends Component {
         page: 1,
       })
     }
-
   }
   componentDidMount () { // 挂载scroll监听
     this.scroll.addEventListener('scroll', this.onScrollHandle)

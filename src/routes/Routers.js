@@ -1,6 +1,6 @@
 import React from 'react'
 import { HashRouter, BrowserRouter, Route, Switch } from 'react-router-dom'
-import { IndexPage, Topic, NewTopic, MessageLisPage, Userhome } from '../components'
+import { IndexPage, Topic, NewTopic, MessageLisPage, Userhome, Login } from '../components'
 const Routers = () => {
   const Router = process.env.NODE_ENV === 'development' ? BrowserRouter : HashRouter
   return (
@@ -10,6 +10,7 @@ const Routers = () => {
         <Route path='/newtopic' component={NewTopic} />
         <Route path='/messages' component={MessageLisPage} />
         <Route path='/userhome' component={Userhome} />
+        <Route path='/login' component={Login} />
         <Route path='/topic/:id' component={Topic} />
       </Switch>
     </Router>
