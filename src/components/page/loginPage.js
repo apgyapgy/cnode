@@ -8,6 +8,11 @@ class Login extends Component {
       loginstate: ''
     }
   }
+  componentWillMount () { // 页面加载前判断一下token是否存在，如果存在则直接回首页
+    if (localStorage.token) {
+      this.props.history.push('/')
+    }
+  }
   handelChange = (e) => {
     this.setState({
       key:e.target.value
@@ -24,8 +29,9 @@ class Login extends Component {
       accesstoken:this.state.key
     })
       .then(res => {
-        window.localStorage.token = this.state.key
-        this.props.history.block()
+        localStorage.token = this.state.key // 服务端验证成功之后在本地存上用户token
+        let { pathname } = this.props.history.location.state.from // 读取重定向传过来的的参数
+        this.props.history.push(pathname) // 跳转回重定向过来的页面
       })
       .catch(err => {
         console.log(err)

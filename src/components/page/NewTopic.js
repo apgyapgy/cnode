@@ -18,6 +18,7 @@ class NewTopic extends Component {
   handleSubmit = () => {
     const { title, tab, content } = this.state
     axios.post('/topics', {
+      accesstoken: localStorage.token,
       title,
       tab,
       content

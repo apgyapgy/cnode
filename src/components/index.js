@@ -6,7 +6,7 @@ import Loading from './Loading'
 import Tab from './Tab'
 import Topic from './page/Topic'
 import NewTopic from './page/NewTopic'
-import MessageLisPage from './page/messages'
+import NewsPage from './page/newsPage'
 import Userhome from './page/userHome'
 import Login from './page/loginPage.js'
 
@@ -20,7 +20,7 @@ export {
   Tab,
   Topic,
   NewTopic,
-  MessageLisPage,
+  NewsPage,
   Userhome,
   Login,
   RequestFn

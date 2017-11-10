@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Footer } from '../index'
-class MessageLisPage extends Component {
+class NewsPage extends Component {
   render () {
     return (
       <div className='rootBox'>
@@ -14,4 +14,4 @@ class MessageLisPage extends Component {
   }
 }
 
-export default MessageLisPage
+export default NewsPage
