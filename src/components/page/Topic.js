@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
-import axios from 'axios'
 import marked from 'marked'
 import { Link } from 'react-router-dom'
-import { Loading } from '../index'
+import { Loading, RequestFn } from '../index'
 import moment from 'moment'
 marked.setOptions({
   renderer: new marked.Renderer(),
@@ -24,23 +23,14 @@ class Topic extends Component {
     }
   }
   async componentWillMount () {
-    let data = await this.getTopic(`${this.props.match.params.id}`)
+    let data = await RequestFn({ url:`/topic/${this.props.match.params.id}`, params: { mdrender: false } })
     this.setState({
       content: marked(data.data.data.content),
       replies: data.data.data.replies,
       loading: false
     })
   }
-  getTopic = (url) => {
-    return axios.get(`/topic/${url}`, {
-      params: {
-        mdrender: false
-      }
-    })
-      .then(res => res)
-  }
   render () {
-    console.log(this.state)
     return (
       <div className='rootBox'>
         <header className='topic-header' flex='flex'>

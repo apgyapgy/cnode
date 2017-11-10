@@ -1,5 +1,5 @@
 import React from 'react'
-import { HashRouter, BrowserRouter, Route, Switch } from 'react-router-dom'
+import { HashRouter, BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
 import { IndexPage, Topic, NewTopic, MessageLisPage, Userhome, Login } from '../components'
 const Routers = () => {
   const Router = process.env.NODE_ENV === 'development' ? BrowserRouter : HashRouter
@@ -16,4 +16,11 @@ const Routers = () => {
     </Router>
   )
 }
+const LoginComponent = ({ component:Component, ...data }) => (
+  <Route {...data} render={props => (
+    !localStorage
+      ? <Redirect to='/login' />
+      : <Component {...props} />
+  )} />
+)
 export default Routers

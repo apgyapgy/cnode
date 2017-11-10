@@ -13,7 +13,7 @@ class Login extends Component {
       key:e.target.value
     })
   }
-  handleSubmit = () => {
+  handleSubmit = async () => {
     if (this.state.key === '') {
       this.setState({
         loginstate: '请填写token'

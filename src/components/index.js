@@ -9,6 +9,8 @@ import NewTopic from './page/NewTopic'
 import MessageLisPage from './page/messages'
 import Userhome from './page/userHome'
 import Login from './page/loginPage.js'
+
+import { RequestFn } from './requestFn/'
 export {
   Header,
   Footer,
@@ -20,5 +22,6 @@ export {
   NewTopic,
   MessageLisPage,
   Userhome,
-  Login
+  Login,
+  RequestFn
 }
