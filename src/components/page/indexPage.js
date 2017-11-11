@@ -45,7 +45,6 @@ class IndexPage extends Component {
     const scrollHeight = event.target.scrollHeight
     const scrollTop = event.target.scrollTop
     if ((clientHeight + scrollTop).toFixed(0) * 1 === scrollHeight) {
-      console.log(2)
       this.setState({
         loading: true
       })
