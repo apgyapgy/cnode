@@ -288,7 +288,7 @@ body {
   bottom: 5px;
   left: 0;
 }
-.messages-title, .userhome-title {
+.news-title, .userhome-title {
     height: 49px;
     line-height: 49px;
     text-align: center;
@@ -296,7 +296,7 @@ body {
     border-bottom: 1px solid #ddd;
     width: 100%;
 }
-.messages-content,.userhome-content {
+.news-content,.userhome-content {
   position: absolute;
   top:50px;
   right: 0;
@@ -359,4 +359,29 @@ body {
 .longin-content-message {
   text-align: center;
   color: #f5317f;
+}
+// 全局通知样式
+.message {
+  font-size: 12px;
+  position: fixed;
+  z-index: 1010;
+  width: 100%;
+  top: 60px;
+  left: 0;
+  &-notice {
+    text-align: center;
+  }
+  &-notice-content {
+    padding: 5px 10px;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0,0,0,.2);
+    background: #fff;
+    display: inline-block;
+  }
+  &-error {
+    color: #f04134;
+  }
+  &-warning {
+    color: #ffbf00;
+  }
 }

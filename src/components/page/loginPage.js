@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
+import { Message } from '../index'
 import axios from 'axios'
 class Login extends Component {
   constructor () {
     super()
     this.state = {
       key:'',
-      loginstate: ''
     }
   }
   componentWillMount () { // 页面加载前判断一下token是否存在，如果存在则直接回首页
@@ -20,9 +20,7 @@ class Login extends Component {
   }
   handleSubmit = async () => {
     if (this.state.key === '') {
-      this.setState({
-        loginstate: '请填写token'
-      })
+      Message.info('请填写token')
       return
     }
     axios.post('/accesstoken', {
@@ -52,7 +50,6 @@ class Login extends Component {
             <input placeholder='请输入Access Token' name='key' onChange={this.handelChange} />
           </div>
           <button onClick={this.handleSubmit}>提交</button>
-          <p className='longin-content-message'>{this.state.loginstate}</p>
         </div>
       </div>
     )

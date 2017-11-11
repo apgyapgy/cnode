@@ -4,8 +4,8 @@ class NewsPage extends Component {
   render () {
     return (
       <div className='rootBox'>
-        <header className='messages-title'>未读消息</header>
-        <div className='messages-content'>
+        <header className='news-title'>未读消息</header>
+        <div className='news-content'>
           暂无消息
         </div>
         <Footer />

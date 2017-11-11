@@ -1,7 +1,7 @@
 import React from 'react'
 import { HashRouter, BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
 import { IndexPage, Topic, NewTopic, NewsPage, Userhome, Login } from '../components'
-import Ceshi from '../components/Message/index'
+
 const Routers = () => {
   const Router = process.env.NODE_ENV === 'development' ? BrowserRouter : HashRouter
   return (
@@ -11,7 +11,7 @@ const Routers = () => {
         <LoginComponent path='/newtopic' component={NewTopic} />
         <LoginComponent path='/messages' component={NewsPage} />
         <LoginComponent path='/userhome' component={Userhome} />
-        <Route path='/login' component={Ceshi} />
+        <Route path='/login' component={Login} />
         <Route path='/topic/:id' component={Topic} />
       </Switch>
     </Router>

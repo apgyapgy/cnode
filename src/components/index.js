@@ -9,7 +9,7 @@ import NewTopic from './page/NewTopic'
 import NewsPage from './page/newsPage'
 import Userhome from './page/userHome'
 import Login from './page/loginPage.js'
-
+import Message from './Message'
 import { RequestFn } from './requestFn/'
 export {
   Header,
@@ -23,5 +23,6 @@ export {
   NewsPage,
   Userhome,
   Login,
-  RequestFn
+  RequestFn,
+  Message
 }
