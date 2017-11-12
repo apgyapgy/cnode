@@ -5,6 +5,7 @@
   "dependencies": {
     "axios": "^0.17.0",
     "babel-polyfill": "^6.26.0",
+    "gh-pages": "^1.0.0",
     "github-markdown-css": "^2.9.0",
     "lib-flexible": "^0.3.2",
     "marked": "^0.3.6",
@@ -28,7 +29,9 @@
     "start": "npm-run-all -p watch-css start-js",
     "build": "npm run build-css && react-app-rewired build",
     "test": "react-app-rewired test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "devDependencies": {
     "babel-plugin-import": "^1.4.0",
@@ -41,5 +44,6 @@
     "eslint-plugin-react": "^7.3.0",
     "eslint-plugin-standard": "^3.0.1",
     "react-app-rewired": "^1.2.5"
-  }
+  },
+  "homepage": "https://himrhu.github.io/cnode"
 }
