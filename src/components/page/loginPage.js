@@ -20,7 +20,7 @@ class Login extends Component {
   }
   handleSubmit = async () => {
     if (this.state.key === '') {
-      Message.info('请填写token')
+      Message.warning('请填写token')
       return
     }
     axios.post('/accesstoken', {
@@ -33,13 +33,10 @@ class Login extends Component {
       })
       .catch(err => {
         console.log(err)
-        this.setState({
-          loginstate: 'Token不正确'
-        })
+        Message.error('Token不正确')
       })
   }
   render () {
-    console.log(this.props)
     return (
       <div className='rootBox'>
         <header className='login-header'>

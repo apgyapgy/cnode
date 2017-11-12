@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Footer } from '../index'
+import { Footer, Message } from '../index'
 import axios from 'axios'
 class NewTopic extends Component {
   constructor () {
@@ -17,15 +17,25 @@ class NewTopic extends Component {
   }
   handleSubmit = () => {
     const { title, tab, content } = this.state
+    if (title === '' && content === '') {
+      Message.error('请填写标题或内容后重试')
+      return
+    }
     axios.post('/topics', {
       accesstoken: localStorage.token,
       title,
       tab,
       content
     })
+      .then(res => {
+        this.props.history.puhs(`/topic/${res.data.topic_id}`)
+      })
+      .catch(err => {
+        Message.error(`${err.response.data.error_msg}`)
+      })
   }
   render () {
-    console.log(this.state)
+    console.log(this.props)
     return (
       <div className='rootBox'>
         <header className='new-header' flex='flex'>
@@ -34,6 +44,7 @@ class NewTopic extends Component {
         <form className='new-topic' onChange={this.handleTitleChange} >
           <input autoFocus type='text' placeholder='标题' name='title' />
           <select className='new-topic-selece' name='tab'>
+            <option value='' defaultValue >请选择分类</option>
             <option value='share' >分享</option>
             <option value='ask'>问答</option>
             <option value='job'>招聘</option>
