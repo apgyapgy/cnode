@@ -12,13 +12,15 @@ class IndexPage extends Component {
     }
   }
   async componentWillMount () {
-    let data = await RequestFn({ url: '/topics', params:{ page: this.state.page, tab: this.state.tab } })
+    let search = this.props.location.search ? this.props.location.search.slice(5) : 'all' // 截取字符串
+    let data = await RequestFn({ url: '/topics', params:{ page: this.state.page, tab: search } })
     this.setState((prevState) => {
       return {
         content: data.data.data,
         status: true,
         page: prevState.page + 1,
-        loading: false
+        loading: false,
+        tab: search
       }
     })
   }
