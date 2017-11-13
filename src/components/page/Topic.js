@@ -34,7 +34,6 @@ class Topic extends Component {
     })
   }
   render () {
-    console.log(this.state)
     return (
       <div className='rootBox'>
         <header className='topic-header' flex='flex'>
@@ -58,7 +57,13 @@ class Topic extends Component {
               {this.state.data.replies.map((item, index) => {
                 let content = marked(item.content)
                 return (
-                  <Replies key={index} content={content} data={item} />
+                  <Replies
+                    key={index} // key
+                    content={content} // 编译好的html
+                    data={item} // 所有数据
+                    location={this.props.location} // 当前页面url信息
+                    Router={this.props.history} // 路由方法
+                  />
                 )
               })}
             </div>

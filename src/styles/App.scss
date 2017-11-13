@@ -403,3 +403,18 @@ body {
     color: #ffbf00;
   }
 }
+.Reply {
+  width: 100%;
+  resize:none;
+  border: 1px solid #eee;
+  border-radius: 5px;
+  padding: 10px;
+  &-botton {
+    width: 70px;
+    height: 30px;
+    background: #108ee9;
+    border: 1px solid #108ee9;
+    color:#fff;
+    border-radius: 5px;
+  }
+}
