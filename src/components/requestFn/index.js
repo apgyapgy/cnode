@@ -7,7 +7,6 @@ import axios from 'axios'
  * @param {Object} data.params - 请求附加的参数
  */
 export function RequestFn (data) {
-  console.log(data)
   return (
     axios.get(data.url, {
       params:{

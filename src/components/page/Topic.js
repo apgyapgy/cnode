@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import marked from 'marked'
-import { Link } from 'react-router-dom'
-import { Loading, RequestFn } from '../index'
+import { Loading, RequestFn, Replies } from '../index'
 import moment from 'moment'
 marked.setOptions({
   renderer: new marked.Renderer(),
@@ -17,20 +16,25 @@ class Topic extends Component {
   constructor () {
     super()
     this.state = {
-      content: '',
       loading: true,
-      replies: ''
+      data: '',
+      Reply: false
     }
   }
   async componentWillMount () {
     let data = await RequestFn({ url:`/topic/${this.props.match.params.id}`, params: { mdrender: false } })
     this.setState({
-      content: marked(data.data.data.content),
-      replies: data.data.data.replies,
-      loading: false
+      loading: false,
+      data: data.data.data
+    })
+  }
+  onChangeReply = (state) => {
+    this.setState({
+      Reply: state
     })
   }
   render () {
+    console.log(this.state)
     return (
       <div className='rootBox'>
         <header className='topic-header' flex='flex'>
@@ -41,18 +45,20 @@ class Topic extends Component {
           {this.state.loading
             ? <Loading loading={this.state.loading} />
             : <div>
-              <div dangerouslySetInnerHTML={{ __html: this.state.content }} className='markdown-body' />
-              {this.state.replies.map((item, index) => {
+              <h2>{this.state.data.title}</h2>
+              <div flex='flex' className='topic-content-author'>
+                <img src={this.state.data.author.avatar_url} alt='author' />
+                <div>
+                  <span>{this.state.data.author.loginname}</span>
+                  <span>{moment(`${this.state.data.create_at}`).fromNow()}</span>
+                </div>
+              </div>
+              <div dangerouslySetInnerHTML={{ __html: marked(this.state.data.content) }} className='markdown-body' />
+              <h3>{this.state.data.reply_count} 回复</h3>
+              {this.state.data.replies.map((item, index) => {
                 let content = marked(item.content)
                 return (
-                  <div className='topic-replies markdown-body' key={index} flex='flex'>
-                    <div><img src={item.author.avatar_url} alt='avatar' /></div>
-                    <div className='topic-replies-item'>
-                      <Link to={`/user/${item.author.loginname}`}>{item.author.loginname}</Link>
-                      <span>{moment(`${item.create_at}`).fromNow()}</span>
-                      <div dangerouslySetInnerHTML={{ __html:content }} />
-                    </div>
-                  </div>
+                  <Replies key={index} content={content} data={item} />
                 )
               })}
             </div>

@@ -11,6 +11,9 @@ import Userhome from './page/userHome'
 import Login from './page/loginPage.js'
 import Message from './Message'
 import { RequestFn } from './requestFn/'
+import Like from './LikeOrReply/Like'
+import Reply from './LikeOrReply/Reply'
+import Replies from './replies'
 export {
   Header,
   Footer,
@@ -24,5 +27,8 @@ export {
   Userhome,
   Login,
   RequestFn,
-  Message
+  Message,
+  Like,
+  Reply,
+  Replies
 }

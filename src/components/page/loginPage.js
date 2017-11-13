@@ -27,6 +27,7 @@ class Login extends Component {
       accesstoken:this.state.key
     })
       .then(res => {
+        console.log(this.props)
         localStorage.token = this.state.key // 服务端验证成功之后在本地存上用户token
         let { pathname } = this.props.history.location.state.from // 读取重定向传过来的的参数
         this.props.history.push(pathname) // 跳转回重定向过来的页面

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Message, Footer } from '../index'
+import { Footer } from '../index'
 import axios from 'axios'
 class UserHome extends Component {
   constructor () {
