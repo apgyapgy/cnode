@@ -44,6 +44,14 @@ const Header = () => {
             招聘
           </NavLink>
         </li>
+        <li>
+          <NavLink activeClassName='activeNav'
+            isActive={(match, location) => active(match, location, '?tab=dev')}
+            to='/?tab=dev'
+          >
+            客户端测试
+          </NavLink>
+        </li>
       </ul>
     </nav>
   )

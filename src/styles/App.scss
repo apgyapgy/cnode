@@ -93,7 +93,7 @@ body {
 // 主页文章列表
 .content-box { // 文章区包裹层
   overflow: scroll;
- // 消除下边的滚动条
+  overflow-x:hidden;// 消除下边的滚动条
   position: absolute;
   top:50px;
   right: 0;
@@ -240,6 +240,7 @@ body {
   border-top: 1px solid #ddd;
   img {
     height: 30px;
+
     width: 30px;
     margin-right: 5px;
     border-radius: 50%;
@@ -416,6 +417,9 @@ body {
 }
 .Reply {
   width: 100%;
+  overflow-y:hidden;
+  overflow-x:hidden;
+  box-sizing: border-box;
   resize:none;
   border: 1px solid #eee;
   border-radius: 5px;

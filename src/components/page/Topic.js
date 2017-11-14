@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import marked from 'marked'
-import { Loading, RequestFn, Replies } from '../index'
+import { Loading, RequestFn, Replies, Reply } from '../index'
 import moment from 'moment'
 marked.setOptions({
   renderer: new marked.Renderer(),
@@ -43,7 +43,7 @@ class Topic extends Component {
         <div className='topic-content'>
           {this.state.loading
             ? <Loading loading={this.state.loading} />
-            : <div>
+            : <div style={{ padding: 10 }}>
               <h2>{this.state.data.title}</h2>
               <div flex='flex' className='topic-content-author'>
                 <img src={this.state.data.author.avatar_url} alt='author' />
