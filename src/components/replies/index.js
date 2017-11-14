@@ -71,37 +71,37 @@ class Replies extends Component {
     })
   }
   replySubmit = () => {
-    axios.post(`/topic/${this.props.data.id}/replies`, {
+    axios.post(`${this.props.location.pathname}/replies`, {
       accesstoken: localStorage.token,
       content: this.state.replyContent,
       reply_id: this.props.data.id
     })
+      .then(res => res)
   }
+
   render () {
-    console.log(this.state.replyContent)
+    console.log(this.props)
     return (
-      <div>
-        <div className='topic-replies markdown-body'>
-          <div flex='flex' className='topic-replies-item'>
-            <img src={this.props.data.author.avatar_url} alt='avatar' />
-            <div flex='flex'>
-              <Link to={`/user/${this.props.data.author.loginname}`}>{this.props.data.author.loginname}</Link>
-              <span>发布于:{moment(`${this.props.data.create_at}`).fromNow()}</span>
-              <Like
-                ups={this.state.sup}
-                TopicLike={this.TopicLike}
-                TopicReply={this.TopicReply}
-              />
-            </div>
+      <div className='topic-replies markdown-body'>
+        <div flex='flex' className='topic-replies-item'>
+          <img src={this.props.data.author.avatar_url} alt='avatar' />
+          <div flex='flex'>
+            <Link to={`/user/${this.props.data.author.loginname}`}>{this.props.data.author.loginname}</Link>
+            <span>发布于:{moment(`${this.props.data.create_at}`).fromNow()}</span>
+            <Like
+              ups={this.state.sup}
+              TopicLike={this.TopicLike}
+              TopicReply={this.TopicReply}
+            />
           </div>
-          <div dangerouslySetInnerHTML={{ __html: this.props.content }} />
-          <Reply
-            reply={this.state.reply} // 是否显示
-            defaultValue={`@${this.props.data.author.loginname} `} // 输入框默认显示内容
-            onChange={this.replyonChange} // 受控输入框
-            submit={this.replySubmit}
-          />
         </div>
+        <div dangerouslySetInnerHTML={{ __html: this.props.content }} />
+        <Reply
+          reply={this.state.reply} // 是否显示
+          defaultValue={`@${this.props.data.author.loginname} `} // 输入框默认显示内容
+          onChange={this.replyonChange} // 受控输入框
+          submit={this.replySubmit}
+        />
       </div>
     )
   }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import marked from 'marked'
-import { Loading, RequestFn, Replies, Reply } from '../index'
+import axios from 'axios'
+import { Loading, RequestFn, Replies, Reply, Message } from '../index'
 import moment from 'moment'
 marked.setOptions({
   renderer: new marked.Renderer(),
@@ -18,22 +19,49 @@ class Topic extends Component {
     this.state = {
       loading: true,
       data: '',
-      Reply: false
+      Reply: false,
+      ReplyContent:''
     }
   }
   async componentWillMount () {
-    let data = await RequestFn({ url:`/topic/${this.props.match.params.id}`, params: { mdrender: false } })
+    let data = await RequestFn({ url:`${this.props.location.pathname}/`, params: { mdrender: false } })
     this.setState({
       loading: false,
       data: data.data.data
     })
+    if (localStorage.token) {
+      this.setState({
+        Reply: true
+      })
+    }
   }
-  onChangeReply = (state) => {
+  ReplyOnchenge = (e) => {
     this.setState({
-      Reply: state
+      ReplyContent: e.target.value
     })
   }
+  ReplySubmit = () => {
+    console.log('用户提交评论')
+    if (this.state.ReplyContent === '') {
+      Message.error('请先输入评论')
+      return
+    }
+    axios.post(`${this.props.location.pathname}/replies`, {
+      accesstoken: localStorage.token,
+      content: this.state.ReplyContent
+    })
+      .then(async (res) => {
+        Message.info('评论回复成功')
+        let data = await RequestFn({ url: `${this.props.location.pathname}`, params: { mdrender: false } })
+        console.log(data)
+        this.setState({
+          data: data.data.data,
+          ReplyContent: ''
+        })
+      })
+  }
   render () {
+    console.log(this.props)
     return (
       <div className='rootBox'>
         <header className='topic-header' flex='flex'>
@@ -68,6 +96,14 @@ class Topic extends Component {
               })}
             </div>
           }
+          <Reply
+            reply={this.state.Reply}
+            style={{ margin: 5 }}
+            placeholder='支持Markdown语法'
+            value={this.state.ReplyContent}
+            submit={this.ReplySubmit}
+            onChange={this.ReplyOnchenge}
+          />
         </div>
       </div>
     )

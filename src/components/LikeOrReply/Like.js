@@ -3,10 +3,8 @@ import React from 'react'
 
 const Like = (props) => {
   return (
-    <div>
-      <span onClick={props.TopicLike}>赞 {props.ups}</span>
-      <span onClick={props.TopicReply}>回复</span>
-    </div>
+    [<span onClick={props.TopicLike} key={1} >赞 {props.ups}</span>,
+      <span onClick={props.TopicReply} key={2} >回复</span>]
   )
 }
 export default Like
