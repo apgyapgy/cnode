@@ -50,14 +50,19 @@ body {
   background: #fff;
 }
 // header 
-.AppNav {
+.AppNav, .AppFooter {
   position: absolute;
   background: #fff;
-  top: 0;
   right: 0;
   left: 0;
   z-index: 10;
   border-bottom: 1px solid #ddd;
+}
+.AppNav{
+  top:0;
+}
+.AppFooter{
+  bottom: 0;
 }
 .nav {
   display: flex;
@@ -66,23 +71,29 @@ body {
   font-size: 14px;
   height: 50px;
   li {
-    flex:1;
+    flex: 1;
+    height: 100%;
+    line-height: 50px;
+    a {
+      display: inline-block;
+      width: 100%;
+      height: 100%;
+    }
+    :hover{
+      background-color: #eee;
+    }
   }
+}
+.activeNav {
+  background-color: #eee;
 }
 // 尾部导航
 
-.AppFooter {
-  position: absolute;
-  background: #fff;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  z-index: 10;
-  border-top: 1px solid #ddd;
-}
+
 // 主页文章列表
 .content-box { // 文章区包裹层
   overflow: scroll;
+ // 消除下边的滚动条
   position: absolute;
   top:50px;
   right: 0;
@@ -107,7 +118,6 @@ body {
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    border: 1px solid #333;
   }
 }
 .content-item-reply {
@@ -203,6 +213,7 @@ body {
 .topic-content {
   overflow: scroll;
   position: absolute;
+  overflow-x:hidden;
   width: 100%;
   top:50px;
   right: 0;

@@ -1,5 +1,8 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+const active = (match, location, data) => {
+  return location.search === data
+}
 const Header = () => {
   return (
     <nav className='AppNav'>
@@ -10,22 +13,34 @@ const Header = () => {
           </NavLink>
         </li>
         <li>
-          <NavLink to='/?tab=good' >
+          <NavLink activeClassName='activeNav'
+            isActive={(match, location) => active(match, location, '?tab=good')}
+            to='/?tab=good'
+          >
             精华
           </NavLink>
         </li>
         <li>
-          <NavLink to='/?tab=share' >
+          <NavLink activeClassName='activeNav'
+            isActive={(match, location) => active(match, location, '?tab=share')}
+            to='/?tab=share'
+          >
             分享
           </NavLink>
         </li>
         <li>
-          <NavLink to='/?tab=ask' >
+          <NavLink activeClassName='activeNav'
+            isActive={(match, location) => active(match, location, '?tab=ask')}
+            to='/?tab=ask'
+          >
             问答
           </NavLink>
         </li>
         <li>
-          <NavLink to='/?tab=job' >
+          <NavLink activeClassName='activeNav'
+            isActive={(match, location) => active(match, location, '?tab=job')}
+            to='/?tab=job'
+          >
             招聘
           </NavLink>
         </li>
