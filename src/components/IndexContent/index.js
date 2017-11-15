@@ -17,10 +17,9 @@ const IndexContent = (props) => {
                 <p className='content-title'>{item.title}</p>
               </div>
               <div className='content-item-author flex'>
-                <span>·{item.author.loginname}</span>
-                <time>·发表于{moment(`${item.create_at}`).fromNow()}</time>
-                <div>·{item.reply_count}次回复</div>
-                <div>·最后回复{moment(`${item.last_reply_at}`).fromNow()}</div>
+                <strong>· {item.author.loginname}</strong>
+                <time>· 发表{moment(`${item.create_at}`).fromNow()}</time>
+                <div>· {item.reply_count}次回复</div>
                 <Tab good={item.good} top={item.top} />
               </div>
             </div>

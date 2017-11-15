@@ -32,9 +32,11 @@ class UserHome extends Component {
   render () {
     console.log(this.state.userList)
     return (
-      <div className='rootBox'>
-        <header className='userhome-title'>用户中心</header>
-        <div className='userhome-content'>
+      <div className='Abs-float Root'>
+        <header className='Abs-float AppHeader AppBorder flex'>
+          <h2>用户中心</h2>
+        </header>
+        <div className='Abs-float user-content'>
           <div className='userhome-avatar'>
             {this.state.user.avatar_url && <img src={this.state.user.avatar_url} alt='avatar' /> }
           </div>

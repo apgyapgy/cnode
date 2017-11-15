@@ -37,11 +37,11 @@ class NewTopic extends Component {
   render () {
     console.log(this.props)
     return (
-      <div className='rootBox'>
-        <header className='new-header' flex='flex'>
+      <div className='Abs-float Root'>
+        <header className='Abs-float AppHeader AppBorder flex'>
           <h2>发表</h2><div className='submit' onClick={this.handleSubmit} />
         </header>
-        <form className='new-topic' onChange={this.handleTitleChange} >
+        <form className='Abs-float new-topic' onChange={this.handleTitleChange} >
           <input autoFocus type='text' placeholder='标题' name='title' />
           <select className='new-topic-selece' name='tab'>
             <option value='' defaultValue >请选择分类</option>

@@ -82,20 +82,22 @@ class Replies extends Component {
   render () {
     console.log(this.props)
     return (
-      <div className='topic-replies markdown-body'>
-        <div flex='flex' className='topic-replies-item'>
+      <div className='topic-comment markdown-body'>
+        <div className='topic-replies-item flex'>
           <img src={this.props.data.author.avatar_url} alt='avatar' />
-          <div flex='flex'>
-            <Link to={`/user/${this.props.data.author.loginname}`}>{this.props.data.author.loginname}</Link>
-            <span>发布于:{moment(`${this.props.data.create_at}`).fromNow()}</span>
-            <Like
-              ups={this.state.sup}
-              TopicLike={this.TopicLike}
-              TopicReply={this.TopicReply}
-            />
+          <div>
+            <div dangerouslySetInnerHTML={{ __html: this.props.content }} />
+            <div className='topic-comment-author'>
+              <Link to={`/user/${this.props.data.author.loginname}`}>·{this.props.data.author.loginname} </Link>
+              <span>· 发布于:{moment(`${this.props.data.create_at}`).fromNow()}</span>
+              <Like
+                ups={this.state.sup}
+                TopicLike={this.TopicLike}
+                TopicReply={this.TopicReply}
+              />
+            </div>
           </div>
         </div>
-        <div dangerouslySetInnerHTML={{ __html: this.props.content }} />
         <Reply
           reply={this.state.reply} // 是否显示
           defaultValue={`@${this.props.data.author.loginname} `} // 输入框默认显示内容

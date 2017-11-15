@@ -2,13 +2,12 @@ import React from 'react'
 const Loading = (props) => {
   if (props.loading) {
     return (
-      <div className='loading' flex='flex'>
-        <div className='load-item' />
-        <div className='load-item1' />
-        <div className='load-item2' />
-        <div className='load-item3' />
-        <div className='load-item4' />
-        <div className='load-item5' />
+      <div className='sk-wave'>
+        <div className='sk-rect sk-rect1' />
+        <div className='sk-rect sk-rect2' />
+        <div className='sk-rect sk-rect3' />
+        <div className='sk-rect sk-rect4' />
+        <div className='sk-rect sk-rect5' />
       </div>
     )
   } else {
