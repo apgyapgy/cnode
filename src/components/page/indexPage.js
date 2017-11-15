@@ -68,9 +68,9 @@ class IndexPage extends Component {
   }
   render () {
     return (
-      <div className='rootBox'>
+      <div className='Abs-float Root'>
         <Header />
-        <div className='content-box' ref={node => { this.scroll = node }}>
+        <div className='Abs-float content-box' ref={node => { this.scroll = node }}>
           <ul >
             {this.state.status ? <IndexContent data={this.state.content} /> : ''}
           </ul>

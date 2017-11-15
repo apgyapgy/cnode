@@ -1,0 +1,10 @@
+@mixin Abs-float {
+  position: absolute;
+  min-width: 300px;
+  max-width: 600px;
+  z-index: 0;
+  margin: auto;
+}
+.flex {
+  display: flex
+}

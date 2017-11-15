@@ -1,0 +1,87 @@
+@import "default";
+@import 'defaultColor';
+body {
+  height: 100%;
+  font-size: 12px;
+}
+root {
+  height: 100%;
+}
+// 整体容器
+.Abs-float {
+  @include Abs-float;
+}
+.Root {
+  top:0;
+  right: 0;
+  bottom:0;
+  left: 0;
+}
+.AppHeader, .AppFooter {
+  right: 0;
+  left: 0;
+  height: $Nav-header;
+}
+.AppHeader{
+  top:0;
+  a{
+    border-bottom: 1px solid $nav-border;
+  }
+}
+.AppFooter{
+  bottom: 0;
+  border-top: 1px solid $nav-border
+}
+.nav {
+  display: flex;
+  li {
+    flex: 1;
+    text-align: center;
+    line-height: $Nav-header;
+    a{
+      display: inline-block;
+      height: 100%;
+      width: 100%;
+      color: $Black + ($White * .35);
+      box-sizing: border-box;
+      &:hover{
+        background-color: $nav-hover;
+      }
+    }
+  }
+}
+.activeNav {
+  border: 1px solid $nav-border;
+  border-bottom: 0 !important;
+}
+.content-box{
+  top:50px;
+  right: 0;
+  bottom: 50px;
+  left: 0;
+  overflow: scroll; // 设置内容超出后出现滚动条
+  overflow-x: hidden; // 设置消除下方滚动条
+}
+.content-item {
+  padding: 10px 0;
+  border-bottom: 1px dashed $content-dashed;
+}
+.content-item-top{
+  img{
+    height: 48px;
+    width: 48px;
+    border-radius: 7px;
+    margin-right: 10px;
+  }
+  p{
+    margin: 0;
+  }
+}
+.content-item-author{
+  margin-left: 50px;
+}
+.content-title {
+  font-size:$content-title-fontsize;
+  color:$content-title-color;
+
+}

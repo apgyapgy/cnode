@@ -5,10 +5,13 @@ const active = (match, location, data) => {
 }
 const Header = () => {
   return (
-    <nav className='AppNav'>
+    <nav className='Abs-float AppHeader'>
       <ul className='nav'>
         <li>
-          <NavLink to='/' >
+          <NavLink
+            activeClassName='activeNav'
+            isActive={(match, location) => active(match, location, '')}
+            to='/' >
             全部
           </NavLink>
         </li>

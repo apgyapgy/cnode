@@ -7,25 +7,21 @@ moment.locale('zh-cn')
 const IndexContent = (props) => {
   return (
     props.data.map((item, index) => {
+      console.log(item)
       return (
         <li className='content-item' key={index}>
           <Link to={`/topic/${item.id}`}>
             <div>
-              <div className='content-item-top' flex='flex'>
+              <div className='content-item-top flex'>
                 <img src={item.author.avatar_url} alt='useravatar' />
-                <div className='content-item-user'>
-                  <p>{item.author.loginname}</p>
-                  <time>{moment(`${item.create_at}`).fromNow()}</time>
-                  <Tab good={item.good} top={item.top} />
-                </div>
+                <p className='content-title'>{item.title}</p>
               </div>
-              <div>
-                <p>{item.title}</p>
-              </div>
-              <div flex='flex' className='content-item-reply'>
-                <div><span>{item.visit_count}</span></div>
-                <div><i className='icon iconfont icon-xiaoxi' />{item.reply_count}</div>
-                <div>{moment(`${item.last_reply_at}`).fromNow()}</div>
+              <div className='content-item-author flex'>
+                <span>·{item.author.loginname}</span>
+                <time>·发表于{moment(`${item.create_at}`).fromNow()}</time>
+                <div>·{item.reply_count}次回复</div>
+                <div>·最后回复{moment(`${item.last_reply_at}`).fromNow()}</div>
+                <Tab good={item.good} top={item.top} />
               </div>
             </div>
           </Link>
