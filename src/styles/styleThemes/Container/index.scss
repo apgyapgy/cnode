@@ -237,6 +237,7 @@ root {
     line-height: 28px;
     border: none;
     font-size: 14px;
+    box-sizing: border-box;
     border-bottom: 1px solid #ddd;
   }
   input {
@@ -304,7 +305,18 @@ root {
   padding-bottom: 5px;
   border-bottom: 1px dashed $content-dashed;
 }
-
+// login button
+.login-button {
+  display: block;
+  padding: 10px 15px;
+  border: 0;
+  margin: 5px auto;
+  font-size: 16px;
+  border-radius: 6px;
+  box-sizing: border-box;
+  background: #108ee9;
+  color: $White;
+}
 
 // 全局通知样式
 .message {

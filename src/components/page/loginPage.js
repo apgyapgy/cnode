@@ -39,15 +39,13 @@ class Login extends Component {
   }
   render () {
     return (
-      <div className='rootBox'>
-        <header className='login-header'>
+      <div className='Abs-float Root'>
+        <header className='Abs-float AppHeader'>
           <h2>登录</h2>
         </header>
-        <div className='login-content'>
-          <div className='login-content-input'>
-            <input placeholder='请输入Access Token' name='key' onChange={this.handelChange} />
-          </div>
-          <button onClick={this.handleSubmit}>提交</button>
+        <div className='Abs-float new-topic'>
+          <input placeholder='请输入Access Token' name='key' onChange={this.handelChange} />
+          <button className='login-button ripple' onClick={this.handleSubmit}>提交</button>
         </div>
       </div>
     )
