@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import marked from 'marked'
 import axios from 'axios'
 import { Loading, RequestFn, Replies, Reply, Message } from '../index'
@@ -29,7 +30,7 @@ class Topic extends Component {
       loading: false,
       data: data.data.data
     })
-    if (localStorage.token) {
+    if (this.props.loginState) {
       this.setState({
         Reply: true
       })
@@ -113,5 +114,10 @@ class Topic extends Component {
     )
   }
 }
-
-export default Topic
+function mapStateToProps (state) {
+  console.log(state)
+  return {
+    loginState: state.LoginState.token
+  }
+}
+export default connect(mapStateToProps)(Topic)

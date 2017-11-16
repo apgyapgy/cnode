@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { Footer, RequestFn, Message } from '../index'
 import axios from 'axios'
@@ -14,7 +15,7 @@ class UserHome extends Component {
   async componentWillMount () {
     try {
       let user = await axios.post('/accesstoken', {
-        accesstoken: localStorage.token
+        accesstoken: this.props.loginState
       })
         .then(res => res)
       let userList = await RequestFn({ url:`/user/${user.data.loginname}` })
@@ -50,5 +51,11 @@ class UserHome extends Component {
     )
   }
 }
+function mapStateToProps (state) {
+  console.log(state)
+  return {
+    loginState: state.LoginState.token
+  }
+}
 
-export default UserHome
+export default connect(mapStateToProps)(UserHome)

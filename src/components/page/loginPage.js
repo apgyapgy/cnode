@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { Message } from '../index'
+import { connect } from 'react-redux'
+import { LoginFn } from '../../store/ActionCreate'
 import axios from 'axios'
 class Login extends Component {
   constructor () {
@@ -9,7 +11,7 @@ class Login extends Component {
     }
   }
   componentWillMount () { // 页面加载前判断一下token是否存在，如果存在则直接回首页
-    if (localStorage.token) {
+    if (!(this.props.loginState === '')) {
       this.props.history.push('/')
     }
   }
@@ -27,8 +29,8 @@ class Login extends Component {
       accesstoken:this.state.key
     })
       .then(res => {
-        console.log(this.props)
         localStorage.token = this.state.key // 服务端验证成功之后在本地存上用户token
+        this.props.login(this.state.key)
         let { pathname } = this.props.history.location.state.from // 读取重定向传过来的的参数
         this.props.history.push(pathname) // 跳转回重定向过来的页面
       })
@@ -38,6 +40,7 @@ class Login extends Component {
       })
   }
   render () {
+    console.log(this.props)
     return (
       <div className='Abs-float Root'>
         <header className='Abs-float AppHeader'>
@@ -51,5 +54,15 @@ class Login extends Component {
     )
   }
 }
-
-export default Login
+function mapStateToProps (state) {
+  console.log(state)
+  return {
+    loginState: state.LoginState.token
+  }
+}
+function mapDispatchToProps (dispatch) {
+  return {
+    login: (token) => dispatch(LoginFn.UserLogin(token))
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Login)

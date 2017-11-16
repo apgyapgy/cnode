@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import { Footer, Message } from '../index'
 import axios from 'axios'
 class NewTopic extends Component {
@@ -22,13 +23,13 @@ class NewTopic extends Component {
       return
     }
     axios.post('/topics', {
-      accesstoken: localStorage.token,
+      accesstoken: this.props.loginState,
       title,
       tab,
       content
     })
       .then(res => {
-        this.props.history.puhs(`/topic/${res.data.topic_id}`)
+        this.props.history.push(`/topic/${res.data.topic_id}`)
       })
       .catch(err => {
         Message.error(`${err.response.data.error_msg}`)
@@ -59,5 +60,10 @@ class NewTopic extends Component {
     )
   }
 }
-
-export default NewTopic
+function mapStateToProps (state) {
+  console.log(state)
+  return {
+    loginState: state.LoginState.token
+  }
+}
+export default connect(mapStateToProps)(NewTopic)

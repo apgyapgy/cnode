@@ -317,7 +317,13 @@ root {
   background: #108ee9;
   color: $White;
 }
-
+.news-content {
+  top: 50px;
+  right: 0;
+  bottom: 50px;
+  left: 0;
+  text-align: center;
+}
 // 全局通知样式
 .message {
   font-size: 12px;
